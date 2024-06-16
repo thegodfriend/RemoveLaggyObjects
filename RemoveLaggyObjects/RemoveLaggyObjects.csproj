@@ -7,14 +7,15 @@
     <Product>RemoveLaggyObjects</Product>
     <Description>A Hollow Knight Mod</Description>
     <Copyright>Copyright ©  2021</Copyright>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
     <!-- Change this to the path of your modded HK installation -->
     <HollowKnightRefs>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\</HollowKnightRefs>
     <!-- Change this to the path where you want the ready-to-upload exports to be -->
     <ExportDir>E:/Github_Projects/__Exports/</ExportDir>
+	<PathMap>$(MSBuildProjectDirectory)=source</PathMap>
   </PropertyGroup>
   <Target Name="CopyMod" AfterTargets="PostBuildEvent">
     <RemoveDir Directories="$(ExportDir)/$(TargetName)/" />
@@ -311,7 +312,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
-    <None Include="ReadMe.md" />
     <None Include="Resources\.gitignore" />
   </ItemGroup>
   <ItemGroup>

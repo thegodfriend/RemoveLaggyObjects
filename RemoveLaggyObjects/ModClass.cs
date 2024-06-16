@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UObject = UnityEngine.Object;
 
 namespace RemoveLaggyObjects
 {
@@ -12,23 +11,8 @@ namespace RemoveLaggyObjects
     {
         internal static RemoveLaggyObjects Instance;
 
-        public override string GetVersion()
-        {
-            return "1.0.0.13";
-        }
-
-        //public override List<ValueTuple<string, string>> GetPreloadNames()
-        //{
-        //    return new List<ValueTuple<string, string>>
-        //    {
-        //        new ValueTuple<string, string>("White_Palace_18", "White Palace Fly")
-        //    };
-        //}
-
-        //public RemoveLaggyObjects() : base("RemoveLaggyObjects")
-        //{
-        //    Instance = this;
-        //}
+        public RemoveLaggyObjects() : base("RemoveLaggyObjects") { }
+        public override string GetVersion() => "1.0.1";
 
         public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloadedObjects)
         {
@@ -65,7 +49,6 @@ namespace RemoveLaggyObjects
             else if (arg1.name == "GG_Hollow_Knight")
             {
                 GameManager.instance.StartCoroutine(RemoveAbyssParticles());
-                GameManager.instance.StartCoroutine(RemoveGlowResponseParticles());
             }
         }
 
@@ -73,7 +56,7 @@ namespace RemoveLaggyObjects
         private IEnumerator RemoveCandles()
         {
             yield return new WaitForFinishedEnteringScene();
-            yield return null;
+            //yield return null;
 
             foreach (GameObject go in UnityEngine.Object.FindObjectsOfType<GameObject>())
             {
@@ -87,7 +70,6 @@ namespace RemoveLaggyObjects
         private IEnumerator RemoveWind()
         {
             yield return new WaitForFinishedEnteringScene();
-            yield return null;
 
             foreach (GameObject go in UnityEngine.Object.FindObjectsOfType<GameObject>())
             {
@@ -101,7 +83,6 @@ namespace RemoveLaggyObjects
         private IEnumerator RemoveCrowd()
         {
             yield return new WaitForFinishedEnteringScene();
-            yield return null;
 
             foreach (GameObject go in UnityEngine.Object.FindObjectsOfType<GameObject>())
             {
@@ -117,7 +98,6 @@ namespace RemoveLaggyObjects
         private IEnumerator RemoveSmoke()
         {
             yield return new WaitForFinishedEnteringScene();
-            yield return null;
 
             foreach (GameObject go in UnityEngine.Object.FindObjectsOfType<GameObject>())
             {
@@ -129,7 +109,6 @@ namespace RemoveLaggyObjects
         private IEnumerator RemoveAbyssParticles()
         {
             yield return new WaitForFinishedEnteringScene();
-            yield return null;
 
             foreach (GameObject go in UnityEngine.Object.FindObjectsOfType<GameObject>())
             {
@@ -137,17 +116,5 @@ namespace RemoveLaggyObjects
             }
         }
 
-        // For PV; testing
-        private IEnumerator RemoveGlowResponseParticles()
-        {
-            yield return new WaitForFinishedEnteringScene();
-            yield return null;
-
-            foreach (GameObject go in UnityEngine.Object.FindObjectsOfType<GameObject>())
-            {
-                if (go.name.Contains("Particle System"))
-                    UnityEngine.Object.Destroy(go);
-            }
-        }
     }
 }
