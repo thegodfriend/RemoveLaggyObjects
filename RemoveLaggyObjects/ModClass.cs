@@ -12,7 +12,7 @@ namespace RemoveLaggyObjects
         internal static RemoveLaggyObjects Instance;
 
         public RemoveLaggyObjects() : base("RemoveLaggyObjects") { }
-        public override string GetVersion() => "1.0.1";
+        public override string GetVersion() => "1.0.2";
 
         public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloadedObjects)
         {
@@ -38,7 +38,7 @@ namespace RemoveLaggyObjects
             {
                 GameManager.instance.StartCoroutine(RemoveCandles());
             }
-            else if (arg1.name == "GG_Hornet_2")
+            else if (arg1.name == "GG_Hornet_2" || arg1.name == "Deepnest_East_Hornet")
             {
                 GameManager.instance.StartCoroutine(RemoveWind());
             }
