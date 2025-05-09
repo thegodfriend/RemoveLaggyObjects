@@ -12,7 +12,7 @@ namespace RemoveLaggyObjects
         internal static RemoveLaggyObjects Instance;
 
         public RemoveLaggyObjects() : base("RemoveLaggyObjects") { }
-        public override string GetVersion() => "1.0.2";
+        public override string GetVersion() => "1.0.3";
 
         public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloadedObjects)
         {
@@ -120,6 +120,7 @@ namespace RemoveLaggyObjects
             }
         }
 
+        // Meant for use in NKG
         private IEnumerator RemoveHeartEyesGlow()
         {
             yield return new WaitForFinishedEnteringScene();
