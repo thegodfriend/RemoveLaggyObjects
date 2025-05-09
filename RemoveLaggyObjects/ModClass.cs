@@ -50,6 +50,10 @@ namespace RemoveLaggyObjects
             {
                 GameManager.instance.StartCoroutine(RemoveAbyssParticles());
             }
+            else if(arg1.name == "Grimm_Nightmare" || arg1.name == "GG_Grimm_Nightmare")
+            {
+                GameManager.instance.StartCoroutine(RemoveHeartEyesGlow());
+            }
         }
 
         // Meant for use in Sly's fight
@@ -116,5 +120,14 @@ namespace RemoveLaggyObjects
             }
         }
 
+        private IEnumerator RemoveHeartEyesGlow()
+        {
+            yield return new WaitForFinishedEnteringScene();
+            
+            foreach (GameObject go in UnityEngine.Object.FindObjectsOfType<GameObject>())
+            {
+                if (go.name.Contains("Halfway Glow")) UnityEngine.Object.Destroy(go);
+            }
+        }
     }
 }
