@@ -54,6 +54,10 @@ namespace RemoveLaggyObjects
             {
                 GameManager.instance.StartCoroutine(RemoveHeartEyesGlow());
             }
+            else if (arg1.name == "GG_Traitor_Lord")
+            {
+                GameManager.instance.StartCoroutine(RemoveFlowers());
+            }
         }
 
         // Meant for use in Sly's fight
@@ -128,6 +132,17 @@ namespace RemoveLaggyObjects
             foreach (GameObject go in UnityEngine.Object.FindObjectsOfType<GameObject>())
             {
                 if (go.name.Contains("Halfway Glow")) UnityEngine.Object.Destroy(go);
+            }
+        }
+
+        // Meant for use in Traitor Lord's arena
+        private IEnumerator RemoveFlowers()
+        {
+            yield return new WaitForFinishedEnteringScene();
+
+            foreach (GameObject go in UnityEngine.Object.FindObjectsOfType<GameObject>())
+            {
+                if (go.name.Contains("gg_traitor_flowers") || go.name.Contains("fung_bush_glow")) UnityEngine.Object.Destroy(go);
             }
         }
     }
